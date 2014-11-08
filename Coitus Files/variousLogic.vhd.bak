@@ -1,0 +1,18 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+ENTITY variousLogic IS
+	PORT(
+		F						: IN STD_LOGIC_VECTOR(15 DOWNTO 0);	
+		Carry14,Carry15 		: IN STD_LOGIC;
+		N,C,Z,V					: OUT STD_LOGIC
+	);
+END variousLogic;
+
+ARCHITECTURE behavior OF variousLogic IS
+BEGIN
+N<= F(15) AND 1;
+C<= Carry15 AND 1;
+Z<= F(0) NOR F(1) NOR F(2) NOR F(3) NOR F(4) NOR F(5) NOR F(6) NOR F(7) NOR F(8) NOR F(9) NOR F(10) NOR F(11) NOR F(12) NOR F(13) NOR F(14) NOR F(15);
+V<= Carry14 XOR Carry15;
+END behavior;

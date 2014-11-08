@@ -1,0 +1,23 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.all;
+
+ENTITY MUX8TO1 IS
+	PORT(
+		x1, x2, x3, x4, x5, x6, x7, x8	:IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+		s1, s2, s3						:IN STD_LOGIC;
+		f1								:OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
+	);
+END MUX8TO1;
+
+ARCHITECTURE behavior OF MUX8TO1 IS
+BEGIN
+	f1 <= x1 WHEN (NOT s1 AND NOT s2 AND NOT s3)='1' ELSE
+		  x2 WHEN (NOT s1 AND NOT s2 AND s3)='1' ELSE
+		  x3 WHEN (NOT s1 AND s2 AND NOT s3)='1' ELSE
+		  x4 WHEN (NOT s1 AND s2 AND s3)='1' ELSE
+		  x5 WHEN (s1 AND NOT s2 AND NOT s3)='1' ELSE
+		  x6 WHEN (s1 AND NOT s2 AND s3)='1' ELSE
+		  x7 WHEN (s1 AND s2 AND NOT s3)='1' ELSE
+		  x8 WHEN (s1 AND s2 AND s3)='1';
+END behavior;
+	
